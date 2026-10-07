@@ -14,6 +14,7 @@ Wiring Instructions:
 - 10k resistor jumps between DHT22 Power and Out pins
 - DHT22 Power pin goes to positive rail
 - DHT22 Ground pin goes to ground rail
+- DHT22 DATA pin goes to whichever GPIO pin you prefer (main.c uses pin 16, which can easily be changed via the DHT_PIN macro)
 
 MIDI MACHINE:
 Perpetual Midi output stream sending a triad chord (an octave below middle C) from the C Major scale including a fourth note that duplicates the root note an octave below every whole note.
@@ -28,6 +29,7 @@ A separate value 0-127 is sent via CC 91 intended to control reverb mix based on
 DHT22 Reads:
 Takes humidity and temperature data input from DHT22 via one-wire protocol.
 Each value is pushed into a ring buffer, one for temperature, one for humidity. The values in the ring buffers are used to calculate a median value to ensure accuracy.
+Negative temperature values are handled via the dht_data_t storing these values as floats, negating having to manually convert
 
 Future Improvements:
 1) Set an initialization script to establish the CC 91 channel
