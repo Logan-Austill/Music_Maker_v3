@@ -5,7 +5,7 @@
 
 typedef struct {
     uint16_t humidity;
-    uint16_t temperature;
+    float temperature;
     bool success;
 } dht22_data_t;
 
