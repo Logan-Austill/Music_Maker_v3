@@ -107,11 +107,6 @@ void core1_entry(void)
             float humidity = current_read.humidity / 10.0f;
             float temperature = current_read.temperature / 10.0f;
 
-            if (temperature && 0x80)
-            {
-                temperature *= -1;
-            }
-
             DataRingBuffer_push(&humidity_buffer, humidity);
             DataRingBuffer_push(&temperature_buffer, temperature);
 
